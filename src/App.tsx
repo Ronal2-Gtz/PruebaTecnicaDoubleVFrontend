@@ -1,13 +1,30 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import './App.css'
+import { SearchUser } from "./pages";
 
-function App() {
+import "./App.css";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <SearchUser />,
+  },
+  {
+    path: "/userList",
+    element: <SearchUser />,
+  },
+  {
+    path: "/statistics",
+    element: <SearchUser />,
+  },
+]);
+
+function App(): React.ReactElement {
   return (
-    <div className='text-3xl font-bold underline'>
-      hola mundo
-    </div>
-  )
+    <section className="mt-32">
+      <RouterProvider router={router} />
+    </section>
+  );
 }
 
-export default App
+export default App;
