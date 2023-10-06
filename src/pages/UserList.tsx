@@ -33,17 +33,17 @@ export const UserList = (): React.ReactElement => {
   if (isError) return <Error />;
 
   return (
-    <div className="mt-32 pb-[100px]">
+    <div className="mt-10 md:mt-32 pb-[100px]">
       <form
         className="flex flex-col justify-center items-center mb-10"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1 className="font-semibold text-4xl">Buscar Usuario de Github</h1>
+        <h1 className="font-semibold text-4xl text-center">Buscar Usuario de Github</h1>
         <input
           type="text"
           {...register("userName", { required: true, minLength: 4 })}
           placeholder="Nombre de usuario"
-          className="max-w-[780px] h-14 w-3/5 border border-gray-400 rounded-md px-4 mt-7"
+          className="w-11/12 md:max-w-[780px] h-14 md:w-3/5 border border-gray-400 rounded-md px-4 mt-7"
         />
         {errors.userName?.type === "required" && (
           <p className="text-red-600">El usuario es requerido</p>

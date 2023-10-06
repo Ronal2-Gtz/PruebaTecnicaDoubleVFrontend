@@ -11,7 +11,7 @@ export const FavoriteUsers = (): React.ReactElement => {
   return (
     <div className="flex flex-col justify-center items-center">
       {data?.length === 0 && <MessageNotUsers />}
-      {data!.length && (
+      {data!.length > 0 && (
         <div className="w-full">
           <h1 className="font-semibold text-4xl my-12 text-center">
             Usuarios Favoritos

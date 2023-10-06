@@ -3,6 +3,7 @@ import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 
 import { Box } from "../index";
 import { useSaveUser } from "../../services/saveUser";
+import toast from "react-hot-toast";
 
 type CardProps = {
   name: string;
@@ -44,7 +45,12 @@ export const UserCard = ({
           following,
         },
         {
-          onSuccess: () => setIsFavorite(true),
+          onSuccess: () => {
+            setIsFavorite(true);
+            toast('Usuario guardado en favoritos!', {
+              icon: '❤️',
+            });
+          },
         }
       );
     }
@@ -62,15 +68,15 @@ export const UserCard = ({
     <div className="max-w-[780px] w-3/5 h-auto m-auto p-5 shadow-lg shadow-blue-100 relative">
       <button
         onClick={handleRegister}
-        className="text-red-600 absolute right-5 top-6 text-xl"
+        className="text-red-600 md:absolute right-5 top-6 text-xl"
       >
         {isFavorite ? <MdFavorite /> : <MdFavoriteBorder />}
       </button>
-      <div className="flex gap-7">
+      <div className="text-center md:text-start md:flex gap-7">
         <img
           src={avatar_url}
           alt="profile"
-          className=" w-36 h-36 rounded-full"
+          className="m-auto md:m-0 w-36 h-36 rounded-full"
         />
         <div className="flex flex-col gap-1 text-lg">
           <h2 className="font-semibold text-2xl">{name}</h2>
@@ -83,10 +89,10 @@ export const UserCard = ({
           </a>
           <p>{location}</p>
           <p>{bio}</p>
-          <div className="flex items-center gap-5 mt-4">
+          <div className="flex flex-col md:flex-row flex-wrap items-center gap-5 mt-4">
             <Box title="Repositorios" label={public_repos} />
-            <Box title="Seguidores" label={following} />
-            <Box title="Seguidos" label={followers} />
+            <Box title="Seguidores" label={followers} />
+            <Box title="Seguidos" label={following} />
           </div>
         </div>
       </div>

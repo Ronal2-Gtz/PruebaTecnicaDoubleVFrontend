@@ -10,16 +10,16 @@ export const Statistics = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      {data?.length === 0 && <MessageNotUsers/>}
-      {data && data.length && (
+      {data?.length === 0 && <MessageNotUsers />}
+      {data && data.length > 0 && (
         <div className="w-10/12">
           <h1 className="font-semibold text-4xl my-12 text-center">
-            Esdisticas de seguidores
+            Estadística de seguidores
           </h1>
 
           <LinesChart
             labels={data && data.map((user) => user.login)}
-            data={data && data.map((user) => user.following)}
+            data={data && data.map((user) => user.followers)}
           />
         </div>
       )}

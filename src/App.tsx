@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import { SearchUser, UserList, Statistics, FavoriteUsers } from "./pages";
 
@@ -18,6 +19,7 @@ const queryClient = new QueryClient({
 function App(): React.ReactElement {
   return (
     <section>
+      <Toaster position="bottom-right" reverseOrder={false} />
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Navbar />

@@ -15,7 +15,7 @@ export const SearchUser = (): React.ReactElement => {
   if (isError) return <Error />;
 
   return (
-    <section className="mt-32">
+    <section className="mt-10 mb-24 md:mt-32">
       {data?.login && (
         <UserCard
           {...data}

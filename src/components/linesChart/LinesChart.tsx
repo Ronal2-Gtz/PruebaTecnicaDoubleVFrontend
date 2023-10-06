@@ -29,13 +29,11 @@ type LinesChartProps = {
 
 export const LinesChart = ({ labels, data }: LinesChartProps) => {
 
-    console.log({labels, data})
-
   const midata = {
     labels,
     datasets: [
       {
-        label: "Usuarios",
+        label: "Seguidores",
         data,
         tension: 0.5,
         fill: true,
