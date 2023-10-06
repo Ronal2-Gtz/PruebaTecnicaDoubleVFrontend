@@ -64,7 +64,6 @@ export const UserList = (): React.ReactElement => {
         {githubUsers.length > 0 &&
           !isError &&
           githubUsers.map((user) => <UserBox key={user.id} {...user} />)}
-      {/* <LinesChart labels={githubUsers.map(user => user.login)} data={githubUsers.map(user => user.following)}/> */}
       </div>
     </div>
   );

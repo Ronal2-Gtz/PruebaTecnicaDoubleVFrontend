@@ -23,8 +23,8 @@ ChartJS.register(
 );
 
 type LinesChartProps = {
-  labels: Array<string>;
-  data: Array<number>;
+  labels?: Array<string>;
+  data?: Array<number>;
 };
 
 export const LinesChart = ({ labels, data }: LinesChartProps) => {
@@ -39,11 +39,11 @@ export const LinesChart = ({ labels, data }: LinesChartProps) => {
         data,
         tension: 0.5,
         fill: true,
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        borderColor: "#6374FF",
+        backgroundColor: "#6374ff59",
         pointRadius: 5,
-        pointBorderColor: "rgba(255, 99, 132)",
-        pointBackgroundColor: "rgba(255, 99, 132)",
+        pointBorderColor: "#6374FF",
+        pointBackgroundColor: "#6374FF",
       },
     ],
   };
