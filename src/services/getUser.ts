@@ -20,13 +20,19 @@ export type UserResponse = {
 export const useGetUser = (
   user?: string
 ): UseQueryResult<UserResponse, ErrorAttr> => {
-  return useQuery(["getUser"], async () => {
-    const { data } = await axios.get<ResponseAttr<UserResponse>>(
-      `${PATH}/${user}`
-    );
+  return useQuery(
+    ["getUser", user],
+    async () => {
+      const { data } = await axios.get<ResponseAttr<UserResponse>>(
+        `${PATH}/${user}`
+      );
 
-    return data;
-  });
+      return data;
+    },
+    {
+      enabled: !!user,
+    }
+  );
 };
 
 type verifyUserResponse = {
@@ -36,11 +42,17 @@ type verifyUserResponse = {
 export const useVerifyUser = (
   user?: string
 ): UseQueryResult<verifyUserResponse, ErrorAttr> => {
-  return useQuery("verifyUser", async () => {
-    const { data } = await axios.get<ResponseAttr<verifyUserResponse>>(
-      `${PATH_LOCAL}/${user}`
-    );
+  return useQuery(
+    ["verifyUser", user],
+    async () => {
+      const { data } = await axios.get<ResponseAttr<verifyUserResponse>>(
+        `${PATH_LOCAL}/${user}`
+      );
 
-    return data;
-  });
+      return data;
+    },
+    {
+      enabled: !!user,
+    }
+  );
 };
