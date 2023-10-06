@@ -3,7 +3,7 @@ import axios from "axios";
 import { type ResponseAttr, type ErrorAttr } from "./types";
 
 const PATH = "https://api.github.com/users";
-const PATH_LOCAL = "http://localhost:8080/user";
+const PATH_LOCAL = "https://sydney-headless-chicken-monster-jedz.1.sg-1.fl0.io/user";
 
 export type UserResponse = {
   name: string;

@@ -2,7 +2,7 @@ import axios from "axios";
 import { UseMutationResult, useMutation } from "react-query";
 import { ErrorAttr, ResponseAttr } from "./types";
 
-const PATH_LOCAL = "http://localhost:8080/user";
+const PATH_LOCAL = "https://sydney-headless-chicken-monster-jedz.1.sg-1.fl0.io/user";
 
 type UserData = {
   name: string;
