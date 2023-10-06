@@ -1,13 +1,40 @@
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
-import './App.css'
+import { SearchUser, UserList, Statistics, FavoriteUsers } from "./pages";
 
-function App() {
+import "./App.css";
+import { Navbar } from "./components";
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
+
+function App(): React.ReactElement {
   return (
-    <div className='text-3xl font-bold underline'>
-      hola mundo
-    </div>
-  )
+    <section>
+      <Toaster position="bottom-right" reverseOrder={false} />
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<UserList />} />
+            <Route path="/searchUser/:user" element={<SearchUser />} />
+            <Route path="/statistics" element={<Statistics />} />
+            <Route path="/favoriteUser" element={<FavoriteUsers />} />
+            <Route path="/*" element={<Navigate to="/" />} />
+          </Routes>
+        </BrowserRouter>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </section>
+  );
 }
 
-export default App
+export default App;
