@@ -11,13 +11,12 @@ export const SearchUser = (): React.ReactElement => {
   const { data, isError, isLoading } = useGetUser(user);
   const { data: verifyData } = useVerifyUser(user);
 
+  if (isLoading) return <Loading />;
+  if (isError) return <Error />;
+
   return (
     <section className="mt-32">
-      <div className="flex flex-col justify-center items-center">
-        {isLoading && <Loading />}
-        {isError && <Error />}
-      </div>
-      {data?.login && !isError && (
+      {data?.login && (
         <UserCard
           {...data}
           isVerify={verifyData ? verifyData.isFavorite : false}

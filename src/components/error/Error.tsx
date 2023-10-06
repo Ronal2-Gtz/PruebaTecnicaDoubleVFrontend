@@ -1,6 +1,6 @@
 export const Error = (): React.ReactElement => {
   return (
-    <main className=" h-4/5 w-full flex flex-col justify-center items-center ">
+    <main className=" h-4/5 w-full flex flex-col justify-center items-center  mt-[300px] ">
       <div className="relative">
         <h1 className="text-9xl font-extrabold text-[#58585888] tracking-widest">
           404

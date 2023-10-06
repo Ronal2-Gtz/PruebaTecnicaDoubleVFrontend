@@ -9,7 +9,6 @@ type Inputs = {
   userName: string;
 };
 
-
 export const UserList = (): React.ReactElement => {
   const [githubUsers, setGithubUsers] = useState<Array<UserResponse>>([]);
 
@@ -29,6 +28,9 @@ export const UserList = (): React.ReactElement => {
     if (!data) return;
     setGithubUsers(data.items.slice(0, 10));
   };
+
+  if (isLoading) return <Loading />;
+  if (isError) return <Error />;
 
   return (
     <div className="mt-32 pb-[100px]">
@@ -56,14 +58,9 @@ export const UserList = (): React.ReactElement => {
           Buscar usuario
         </button>
       </form>
-      <div className="flex flex-col justify-center items-center">
-        {isLoading && <Loading />}
-        {isError && <Error />}
-      </div>
+      <div className="flex flex-col justify-center items-center"></div>
       <div className="max-w-[780px] m-auto gap-y-10 flex flex-wrap justify-center items-center ">
-        {githubUsers.length > 0 &&
-          !isError &&
-          githubUsers.map((user) => <UserBox key={user.id} {...user} />)}
+        {githubUsers.length > 0 && githubUsers.map((user) => <UserBox key={user.id} {...user} />)}
       </div>
     </div>
   );

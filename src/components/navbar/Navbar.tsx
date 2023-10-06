@@ -8,7 +8,7 @@ export const Navbar = () => {
         <Link className="text-5xl font-bold leading-none" to="/">
           <AiFillGithub />
         </Link>
-        <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2  lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
+        <ul className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2  lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
           <li>
             <NavLink className={({isActive}) => `${isActive ? 'text-blue-600 font-bold': 'text-gray-400'}  hover:text-gray-500`} to="/statistics">
               Estadisticas
@@ -36,7 +36,7 @@ export const Navbar = () => {
           </li>
         </ul>
         <Link
-          className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600  text-white font-bold rounded-xl transition duration-200"
+          className="lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600  text-white font-bold rounded-xl transition duration-200"
           to="/"
         >
           Buscar usuario

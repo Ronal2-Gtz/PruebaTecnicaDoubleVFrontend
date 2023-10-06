@@ -2,6 +2,8 @@ import axios from "axios";
 import { UseMutationResult, useMutation } from "react-query";
 import { ErrorAttr, ResponseAttr } from "./types";
 
+const PATH_LOCAL = "http://localhost:8080/user";
+
 type UserData = {
   name: string;
   login: string;
@@ -20,7 +22,7 @@ export const useSaveUser = (): UseMutationResult<
 > => {
   return useMutation(async (userData) => {
     const { data } = await axios.post<ResponseAttr<UserData>>(
-      "http://localhost:8080/user",
+      `${PATH_LOCAL}`,
       userData
     );
 
