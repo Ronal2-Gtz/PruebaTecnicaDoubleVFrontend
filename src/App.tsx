@@ -29,7 +29,7 @@ const queryClient = new QueryClient();
 
 function App(): React.ReactElement {
   return (
-    <section className="mt-32">
+    <section>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
         <ReactQueryDevtools initialIsOpen={false} />

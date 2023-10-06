@@ -13,6 +13,7 @@ export type User = {
   followers: number;
   following: number;
   avatar_url: string;
+  id: string;
 };
 
 type ListResponse = {

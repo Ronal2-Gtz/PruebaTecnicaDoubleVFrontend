@@ -63,7 +63,8 @@ export const UserList = (): React.ReactElement => {
       <div className="max-w-[780px] m-auto gap-y-10 flex flex-wrap justify-center items-center ">
         {githubUsers.length > 0 &&
           !isError &&
-          githubUsers.map((user) => <UserBox key={user.bio} {...user} />)}
+          githubUsers.map((user) => <UserBox key={user.id} {...user} />)}
+      {/* <LinesChart labels={githubUsers.map(user => user.login)} data={githubUsers.map(user => user.following)}/> */}
       </div>
     </section>
   );

@@ -12,6 +12,7 @@ export type UserResponse = {
   public_repos: number;
   followers: number;
   following: number;
+  id: string;
   avatar_url: string;
 };
 
