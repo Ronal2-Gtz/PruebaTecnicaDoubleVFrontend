@@ -8,14 +8,15 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { SearchUser } from "./pages";
 
 import "./App.css";
+import { UserList } from "./pages/UserList";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <SearchUser />,
+    element: <UserList />,
   },
   {
-    path: "/userList",
+    path: "/searchUser/:user",
     element: <SearchUser />,
   },
   {

@@ -16,7 +16,7 @@ export type UserResponse = {
 };
 
 export const useGetUser = (
-  user: string
+  user?: string
 ): UseQueryResult<UserResponse, ErrorAttr> => {
   return useQuery(
     "getUser",
@@ -28,7 +28,7 @@ export const useGetUser = (
       return data;
     },
     {
-      enabled: false,
+      enabled: !!user,
     }
   );
 };

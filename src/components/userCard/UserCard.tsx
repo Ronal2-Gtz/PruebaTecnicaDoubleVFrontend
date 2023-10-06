@@ -11,7 +11,7 @@ type CardProps = {
   avatar_url: string
 }
 
-export const Card = ({
+export const UserCard = ({
   name,
   location,
   login,
