@@ -36,7 +36,7 @@ export const useGetUser = (
 };
 
 type verifyUserResponse = {
-  registered: boolean;
+  isFavorite: boolean;
 };
 
 export const useVerifyUser = (

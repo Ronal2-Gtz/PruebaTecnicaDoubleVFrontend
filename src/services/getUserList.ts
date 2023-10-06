@@ -3,6 +3,7 @@ import axios from "axios";
 import { type ResponseAttr, type ErrorAttr } from "./types";
 
 const PATH = "https://api.github.com/search";
+const PATH_LOCAL = "http://localhost:8080/user";
 
 export type User = {
   name: string;
@@ -36,6 +37,19 @@ export const useUserList = (
     },
     {
       enabled: false,
+    }
+  );
+};
+
+export const useFavoriteUsers = (): UseQueryResult<Array<User>, ErrorAttr> => {
+  return useQuery(
+    "favoriteUsers",
+    async () => {
+      const { data } = await axios.get<ResponseAttr<Array<User>>>(
+        `${PATH_LOCAL}`
+      );
+
+      return data;
     }
   );
 };

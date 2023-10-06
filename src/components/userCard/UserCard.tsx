@@ -14,7 +14,6 @@ type CardProps = {
   following: number;
   avatar_url: string;
   isVerify: boolean;
-  isLoading: boolean;
 };
 
 export const UserCard = ({

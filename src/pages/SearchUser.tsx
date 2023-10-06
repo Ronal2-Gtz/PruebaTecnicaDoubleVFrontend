@@ -9,7 +9,7 @@ type RouteParams = {
 export const SearchUser = (): React.ReactElement => {
   const { user } = useParams<RouteParams>();
   const { data, isError, isLoading } = useGetUser(user);
-  const { data: verifyData, isLoading: isLoadingVerify } = useVerifyUser(user);
+  const { data: verifyData } = useVerifyUser(user);
 
   return (
     <section className="mt-32">
@@ -20,8 +20,7 @@ export const SearchUser = (): React.ReactElement => {
       {data?.login && !isError && (
         <UserCard
           {...data}
-          isVerify={verifyData ? verifyData.registered : false}
-          isLoading={isLoadingVerify}
+          isVerify={verifyData ? verifyData.isFavorite : false}
         />
       )}
     </section>

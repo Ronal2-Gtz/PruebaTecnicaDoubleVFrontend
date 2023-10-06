@@ -31,7 +31,7 @@ export const UserList = (): React.ReactElement => {
   };
 
   return (
-    <section className="mt-32">
+    <div className="mt-32 pb-[100px]">
       <form
         className="flex flex-col justify-center items-center mb-10"
         onSubmit={handleSubmit(onSubmit)}
@@ -66,6 +66,6 @@ export const UserList = (): React.ReactElement => {
           githubUsers.map((user) => <UserBox key={user.id} {...user} />)}
       {/* <LinesChart labels={githubUsers.map(user => user.login)} data={githubUsers.map(user => user.following)}/> */}
       </div>
-    </section>
+    </div>
   );
 };
