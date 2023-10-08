@@ -18,7 +18,7 @@ export const FavoriteUsers = (): React.ReactElement => {
           </h1>
           {data?.map((user) => (
             <div key={user.id} className="mb-24 w-full">
-              <UserCard {...user} isVerify />
+              <UserCard {...user} isFavorite />
             </div>
           ))}
         </div>

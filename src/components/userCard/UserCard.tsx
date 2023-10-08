@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import { AiOutlineLoading } from "react-icons/ai";
 
 import { Box } from "../index";
-import { useSaveUser } from "../../services/saveUser";
-import toast from "react-hot-toast";
 
 type CardProps = {
   name: string;
@@ -14,49 +12,37 @@ type CardProps = {
   followers: number;
   following: number;
   avatar_url: string;
-  isVerify: boolean;
+  isFavorite: boolean;
+  isLoading?: boolean;
+  handleRegisterFavorite?: () => void;
 };
 
-export const UserCard = (props: CardProps): React.ReactElement => {
-  const { mutateAsync } = useSaveUser();
-  const [isFavorite, setIsFavorite] = useState<boolean>(false);
-
-  const {
-    name,
-    location,
-    login,
-    bio,
-    public_repos,
-    followers,
-    avatar_url,
-    following,
-    isVerify,
-  } = props;
-
-  const handleRegister = (): void => {
-    if (!isFavorite) {
-      const promise = mutateAsync(props, {
-        onSuccess: () => setIsFavorite(true),
-      });
-      toast.promise(promise, {
-        loading: "Guardando...",
-        success: <b>Usuario guardado en favoritos! ❤️ </b>,
-        error: <b>Oops ocurrio un error inesperado.</b>,
-      });
-    }
-  };
-
-  useEffect(() => {
-    setIsFavorite(isVerify);
-  }, [isVerify]);
+export const UserCard = ({
+  name,
+  location,
+  login,
+  bio,
+  public_repos,
+  followers,
+  avatar_url,
+  following,
+  isFavorite,
+  isLoading,
+  handleRegisterFavorite,
+}: CardProps): React.ReactElement => {
+  const isFavoriteIcon = isFavorite ? <MdFavorite /> : <MdFavoriteBorder />;
 
   return (
     <div className="max-w-[780px] w-3/5 h-auto m-auto p-5 shadow-lg shadow-blue-100 relative">
       <button
-        onClick={handleRegister}
+        onClick={handleRegisterFavorite}
         className="text-red-600 md:absolute right-5 top-6 text-xl"
       >
-        {isFavorite ? <MdFavorite /> : <MdFavoriteBorder />}
+        {isLoading ? (
+          <AiOutlineLoading className="animate-spin" />
+        ) : (
+          isFavoriteIcon
+        )}
       </button>
       <div className="text-center md:text-start md:flex gap-7">
         <img
