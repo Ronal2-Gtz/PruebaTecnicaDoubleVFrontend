@@ -18,7 +18,7 @@ export const UserBox = ({
         />
         <Link
           className=" text-blue-400 underline"
-          to={`/searchUser/${login}`}
+          to={`/User/${login}`}
         >
           @{login}
         </Link>

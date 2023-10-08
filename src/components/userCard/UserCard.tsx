@@ -17,51 +17,37 @@ type CardProps = {
   isVerify: boolean;
 };
 
-export const UserCard = ({
-  name,
-  location,
-  login,
-  bio,
-  public_repos,
-  followers,
-  avatar_url,
-  following,
-  isVerify,
-}: CardProps): React.ReactElement => {
+export const UserCard = (props: CardProps): React.ReactElement => {
   const { mutateAsync } = useSaveUser();
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
+  const {
+    name,
+    location,
+    login,
+    bio,
+    public_repos,
+    followers,
+    avatar_url,
+    following,
+    isVerify,
+  } = props;
+
   const handleRegister = (): void => {
     if (!isFavorite) {
-      mutateAsync(
-        {
-          name,
-          location,
-          login,
-          bio,
-          public_repos,
-          followers,
-          avatar_url,
-          following,
-        },
-        {
-          onSuccess: () => {
-            setIsFavorite(true);
-            toast('Usuario guardado en favoritos!', {
-              icon: '❤️',
-            });
-          },
-        }
-      );
+      const promise = mutateAsync(props, {
+        onSuccess: () => setIsFavorite(true),
+      });
+      toast.promise(promise, {
+        loading: "Guardando...",
+        success: <b>Usuario guardado en favoritos! ❤️ </b>,
+        error: <b>Oops ocurrio un error inesperado.</b>,
+      });
     }
   };
 
   useEffect(() => {
     setIsFavorite(isVerify);
-
-    return () => {
-      setIsFavorite(false);
-    };
   }, [isVerify]);
 
   return (
