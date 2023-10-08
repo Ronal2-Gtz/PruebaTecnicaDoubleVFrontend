@@ -6,7 +6,7 @@ type RouteParams = {
   user: string;
 };
 
-export const SearchUser = (): React.ReactElement => {
+export const User = (): React.ReactElement => {
   const { user } = useParams<RouteParams>();
   const { data, isError, isLoading } = useGetUser(user);
   const { data: verifyData } = useVerifyUser(user);
