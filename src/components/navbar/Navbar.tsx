@@ -47,7 +47,6 @@ const Routes = (): React.ReactElement => (
 
 export const Navbar = () => {
   return (
-    <body className="bg-blue-500">
       <nav className="relative px-4 py-4 flex justify-between items-start md:items-center bg-white">
         <Link className="text-5xl font-bold leading-none" to="/">
           <AiFillGithub />
@@ -67,6 +66,5 @@ export const Navbar = () => {
           </Link>
         </div>
       </nav>
-    </body>
   );
 };
